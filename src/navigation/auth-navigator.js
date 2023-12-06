@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import React, { useState } from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import LoginScreen from '../screens/login';
+import LoginScreen from "_screens/login";
 
 const Stack = createStackNavigator();
 
@@ -12,7 +12,7 @@ function AuthNavigator() {
         name="Login"
         component={LoginScreen}
         options={{
-          title: 'Sign in',
+          title: "Sign in",
           // When logging out, a pop animation feels intuitive
           // You can remove this if you want the default 'push' animation
           //   animationTypeForReplace: state.isSignout ? 'pop' : 'push',

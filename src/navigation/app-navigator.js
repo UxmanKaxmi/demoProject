@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../screens/home';
-import AboutScreen from '../screens/about';
+import React, { useState } from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "_screens/home";
+import AboutScreen from "_screens/about";
 
 const Stack = createStackNavigator();
 
@@ -12,14 +12,14 @@ export default function AppNavigator() {
         name="Home"
         component={HomeScreen}
         options={{
-          title: 'Home',
+          title: "Home",
         }}
       />
       <Stack.Screen
         name="About"
         component={AboutScreen}
         options={{
-          title: 'About',
+          title: "About",
         }}
       />
     </Stack.Navigator>
