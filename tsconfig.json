@@ -1,7 +1,7 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",
-
   "compilerOptions": {
+    "typeRoots": ["./types"],  //for adding .env types
     "baseUrl": ".",
     "paths": {
       "*": ["./src/*"],

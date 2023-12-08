@@ -7,6 +7,8 @@ import {
   Button,
 } from "react-native";
 import { AppScreenProps } from "_navigation/types";
+import { API_URL, API_TOKEN } from "@env"
+
 
 export default function HomeScreen({
   route,
@@ -16,7 +18,7 @@ export default function HomeScreen({
     <View
       style={{ flex: 1, backgroundColor: "red", width: "100%", height: "100%" }}
     >
-      <Text>HOME SCREEN</Text>
+      <Text>{API_URL}</Text>
       <Button title="PRESS ME" onPress={() => navigation.navigate("About")} />
     </View>
   );
