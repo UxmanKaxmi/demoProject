@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import LoginScreen from "_screens/login";
+import { AuthScreensList } from "_navigation/types";
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<AuthScreensList>();
 
 function AuthNavigator() {
   return (

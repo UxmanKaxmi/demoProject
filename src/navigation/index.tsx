@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { Text } from "react-native";
-import AppNavigator from "_screens/home";
+import AppNavigator from "_navigation/app-navigator";
 import AuthNavigator from "_navigation/auth-navigator";
+import { RootStackParamList } from "./types";
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 function ApplicationNavigator() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -18,11 +19,11 @@ function ApplicationNavigator() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        {isSignedIn == false ? (
-          <Stack.Screen name="Auth Navigator" component={AuthNavigator} />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {isSignedIn != false ? (
+          <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
         ) : (
-          <Stack.Screen name="App Navigator" component={AppNavigator} />
+          <Stack.Screen name="AppNavigator" component={AppNavigator} />
         )}
       </Stack.Navigator>
     </NavigationContainer>

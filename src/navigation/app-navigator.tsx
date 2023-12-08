@@ -3,7 +3,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "_screens/home";
 import AboutScreen from "_screens/about";
 
-const Stack = createStackNavigator();
+import { AppScreensList } from "_navigation/types";
+import LoginScreen from "_screens/login";
+
+const Stack = createStackNavigator<AppScreensList>();
 
 export default function AppNavigator() {
   return (
