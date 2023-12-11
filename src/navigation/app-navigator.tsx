@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import HomeScreen from "_screens/home";
-import AboutScreen from "_screens/about";
+import HomeScreen from "@screens/home-screen";
+import AboutScreen from "@screens/about-screen";
 
-import { AppScreensList } from "_navigation/types";
-import LoginScreen from "_screens/login";
+import { AppScreensList } from "@navigation/navigation.types";
+import CharacterScreen from "@screens/character-screen";
 
 const Stack = createStackNavigator<AppScreensList>();
 
 export default function AppNavigator() {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="Character"
+        component={CharacterScreen}
+        options={{
+          title: "About",
+        }}
+      />
       <Stack.Screen
         name="Home"
         component={HomeScreen}
@@ -25,6 +32,7 @@ export default function AppNavigator() {
           title: "About",
         }}
       />
+
     </Stack.Navigator>
   );
 }

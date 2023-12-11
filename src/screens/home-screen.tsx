@@ -6,7 +6,7 @@ import {
   View,
   Button,
 } from "react-native";
-import { AppScreenProps } from "_navigation/types";
+import { AppScreenProps } from "@navigation/navigation.types";
 import { API_URL, API_TOKEN } from "@env"
 
 

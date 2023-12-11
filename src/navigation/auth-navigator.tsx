@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-
-import LoginScreen from "_screens/login";
-import { AuthScreensList } from "_navigation/types";
+import LoginScreen from "@screens/login-screen";
+import { AuthScreensList } from "@navigation/navigation.types";
+import CounterScreen from "@features/counter";
 
 const Stack = createStackNavigator<AuthScreensList>();
 
 function AuthNavigator() {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="Counter"
+        component={CounterScreen}
+        options={{
+          title: "Counter",
+
+        }}
+      />
       <Stack.Screen
         name="Login"
         component={LoginScreen}

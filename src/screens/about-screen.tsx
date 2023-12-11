@@ -1,4 +1,4 @@
-import { AppScreenProps } from "_navigation/types";
+import { AppScreenProps } from "@navigation/navigation.types";
 import React from "react";
 import {
   SafeAreaView,

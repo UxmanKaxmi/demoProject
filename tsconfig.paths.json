@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      // "*": ["./src/*"],
+      "@screens/*": ["./src/screens/*"],
+      "@navigation/*": ["./src/navigation/*"],
+      "@store/*": ["./src/store/*"],
+      "@types/*": ["src/types/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@imgs/*": ["./src/assets/imgs/*"],
+      "@features/*": ["./src/features/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@config/*": ["src/config/*"],
+      "@service/*": ["src/service/*"]
+    }
+  }
+}

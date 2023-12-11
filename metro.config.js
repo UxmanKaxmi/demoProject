@@ -1,11 +1,38 @@
-const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
+// metro.config.js
+const { mergeConfig } = require('metro-config');
 
-/**
- * Metro configuration
- * https://facebook.github.io/metro/docs/configuration
- *
- * @type {import('metro-config').MetroConfig}
- */
-const config = {};
+const configA = {
+  /* general options */
 
-module.exports = mergeConfig(getDefaultConfig(__dirname), config);
+  resolver: {
+    /* resolver options */
+  },
+  transformer: {
+    /* transformer options */
+  },
+  serializer: {
+    /* serializer options */
+  },
+  server: {
+    /* server options */
+  }
+};
+
+const configB = {
+  /* general options */
+
+  resolver: {
+    /* resolver options */
+  },
+  transformer: {
+    /* transformer options */
+  },
+  serializer: {
+    /* serializer options */
+  },
+  server: {
+    /* server options */
+  }
+};
+
+module.exports = mergeConfig(configA, configB);

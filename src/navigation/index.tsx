@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { Text } from "react-native";
-import AppNavigator from "_navigation/app-navigator";
-import AuthNavigator from "_navigation/auth-navigator";
-import { RootStackParamList } from "./types";
+import AppNavigator from "@navigation/app-navigator";
+import AuthNavigator from "@navigation/auth-navigator";
+
+//@ cant
+import { RootStackParamList } from "@navigation/navigation.types";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
