@@ -3,6 +3,20 @@ export interface Character {
     results: Result[];
 }
 
+export interface ListResponse<T> {
+    // page: number
+    // per_page: number
+    // total: number
+    // count: number
+    // data: T[]
+    total:number
+    pages:number
+    next:string
+    previous:string
+    results:T[]
+
+  }
+
 export interface Info {
     count: number;
     pages: number;

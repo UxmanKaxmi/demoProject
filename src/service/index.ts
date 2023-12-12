@@ -3,7 +3,7 @@ import { API_URL } from "@env"
 // initialize an empty api service that we'll inject endpoints into later as needed
 export const defaultSplitApi = createApi({
     reducerPath:"TestReducerPath",
-    tagTypes:["character"],
+    tagTypes:["Characters"],
     baseQuery: fetchBaseQuery({
         baseUrl: API_URL,
         // prepareHeaders: (headers) => {
