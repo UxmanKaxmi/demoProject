@@ -1,33 +1,37 @@
-import React, { useState } from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import React, {  useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { Text } from "react-native";
-import AppNavigator from "@navigation/app-navigator";
-import AuthNavigator from "@navigation/auth-navigator";
+import { Button, Text, View, useColorScheme } from "react-native";
+import TabNavigator from "@navigation/tab-navigator";
+import ExampleScreen from "@styles/examples";
 
-//@ cant
-import { RootStackParamList } from "@navigation/navigation.types";
-
-const Stack = createStackNavigator<RootStackParamList>();
 
 function ApplicationNavigator() {
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  // const [isSignedIn, setIsSignedIn] = useState(false);
   const [isLoading, setLoading] = useState(false);
+  
 
   if (isLoading) {
     // We haven't finished checking for the token yet
-    return <Text>is LLOADING</Text>;
+    return <Text    style={{}}>is Loading</Text>;
   }
 
+ 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <NavigationContainer >
+
+       {/* For seeing the styles used in our example e.g Typography, Colors, Spacing. */}
+       {/* <ExampleScreen/> */}
+      <TabNavigator/>
+
+
+      {/* If we wanted to use some kind of an auth feature. This navigator bellow should be useful */}
+      {/* <Stack.Navigator screenOptions={{ headerShown: false }}>
         {isSignedIn != false ? (
           <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
         ) : (
           <Stack.Screen name="AppNavigator" component={AppNavigator} />
         )}
-      </Stack.Navigator>
+      </Stack.Navigator> */}
     </NavigationContainer>
   );
 }

@@ -1,6 +1,7 @@
 import { StoreEnhancer, configureStore } from "@reduxjs/toolkit";
 import counterReducer from "../features/counter/actions/counterSlice"
-import { composeWithDevTools } from '@redux-devtools/extension';
+import isGridReducer from "@features/character/actions/is-grid-slice"
+
 import { characterApi } from "@features/character";
 
 
@@ -17,6 +18,7 @@ if (reactotron.createEnhancer) {
 export const store = configureStore({
   reducer: {
     [characterApi.reducerPath]: characterApi.reducer,
+    isGrid: isGridReducer,
     counter: counterReducer
   },
   middleware: (getDefaultMiddleware) =>

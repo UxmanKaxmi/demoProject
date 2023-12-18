@@ -3,26 +3,26 @@
     [
       "module-resolver",
       {
-        "root": ["."],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "root": ["./src"],
         "alias": {
-          // "*": "./src",
-          "@screens": "./src/screens",
+          "*": "./src",
           "@navigation": "./src/navigation",
           "@store": "./src/store",
           "@types": "./src/types",
+          "@assets": "./src/assets/assets",
           "@imgs": "./src/assets/imgs",
           "@features": "./src/features",
           "@hooks": "./src/hooks",
           "@utils": "./src/utils",
           "@config": "./src/config",
           "@service": "./src/service",
-          "@components": "./src/components"
-
-
-
+          "@components": "./src/components",
+          "@styles": "./src/styles",
+          "@screens": "./src/screens"
         }
       }
     ],
     ["module:react-native-dotenv"]
-    ]
+  ]
 }

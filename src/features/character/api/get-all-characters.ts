@@ -1,5 +1,5 @@
 import { defaultSplitApi } from "@service/index"
-import type { Character, ListResponse, Result } from '../types'
+import type { Character, ListResponse, Result } from '../types/character-types'
 
 
 

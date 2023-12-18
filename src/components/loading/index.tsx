@@ -1,12 +1,11 @@
 import { View, ActivityIndicator, StyleSheet } from 'react-native'
-import React, { useState } from 'react'
+import React from 'react'
 
 
 
 const Loading = () => (
     <View style={[styles.container, styles.horizontal]}>
-        <ActivityIndicator size="large" />
-
+        <ActivityIndicator   size="large" />
     </View>
 );
 

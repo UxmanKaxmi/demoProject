@@ -7,6 +7,9 @@ https://www.npmjs.com/package/react-native-dotenv
 Reactron for debugging
 https://github.com/infinitered/reactotron
 
+For handling Typography
+https://github.com/hectahertz/react-native-typography
+
 
 
 

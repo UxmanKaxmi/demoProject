@@ -12,6 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		64152C459FF0ECAFAEA0AA7E /* libPods-demoProject-demoProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D0EC84B65A57B8ED6A5FE68 /* libPods-demoProject-demoProjectTests.a */; };
+		678E167F2B2A6D29004FD8C5 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 678E167E2B2A6D29004FD8C5 /* AntDesign.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D95EEDDA8E4D4977027075AD /* libPods-demoProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC636ADD510BA72F54156EE /* libPods-demoProject.a */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = demoProject/main.m; sourceTree = "<group>"; };
 		1ECB7A331046EB663EF3E895 /* Pods-demoProject-demoProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demoProject-demoProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-demoProject-demoProjectTests/Pods-demoProject-demoProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D0EC84B65A57B8ED6A5FE68 /* libPods-demoProject-demoProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-demoProject-demoProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		678E167E2B2A6D29004FD8C5 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		70E42DB9FFED685062D2AA71 /* Pods-demoProject-demoProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demoProject-demoProjectTests.release.xcconfig"; path = "Target Support Files/Pods-demoProject-demoProjectTests/Pods-demoProject-demoProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		7FC636ADD510BA72F54156EE /* libPods-demoProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-demoProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = demoProject/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		13B07FAE1A68108700A75B9A /* demoProject */ = {
 			isa = PBXGroup;
 			children = (
+				678E167D2B2A6CBB004FD8C5 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -104,6 +107,14 @@
 				2D0EC84B65A57B8ED6A5FE68 /* libPods-demoProject-demoProjectTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		678E167D2B2A6CBB004FD8C5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				678E167E2B2A6D29004FD8C5 /* AntDesign.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -242,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				678E167F2B2A6D29004FD8C5 /* AntDesign.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
