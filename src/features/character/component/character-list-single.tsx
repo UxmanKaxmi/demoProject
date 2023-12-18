@@ -1,6 +1,5 @@
 import { View, Text, TouchableHighlight, StyleSheet, Image, ListRenderItemInfo } from 'react-native'
-import React, { useMemo, useCallback } from 'react';
-import { ListRenderItem } from 'react-native'
+import React, { } from 'react';
 import { Result } from '../types/character-types';
 import { Colors, Sizing, Typography } from '@styles/index';
 

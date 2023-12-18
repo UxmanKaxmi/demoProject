@@ -1,12 +1,10 @@
 import { StoreEnhancer, configureStore } from "@reduxjs/toolkit";
 import counterReducer from "../features/counter/actions/counterSlice"
-import isGridReducer from "@features/character/actions/is-grid-slice"
-
 import { characterApi } from "@features/character";
-
-
 import { setupListeners } from "@reduxjs/toolkit/query";
 import reactotron from "@config/reactotron-config"
+import selectedFilterReducer from "features/character/actions/selected-filter-slice";
+import isGridReducer from "@features/character/actions/is-grid-slice"
 
 
 //added for the null issue in ts reactatron
@@ -19,6 +17,7 @@ export const store = configureStore({
   reducer: {
     [characterApi.reducerPath]: characterApi.reducer,
     isGrid: isGridReducer,
+    selectedFilter: selectedFilterReducer,
     counter: counterReducer
   },
   middleware: (getDefaultMiddleware) =>

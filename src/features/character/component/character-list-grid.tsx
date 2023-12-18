@@ -12,7 +12,7 @@ export const CharacterListGrid = ({ item, index, separators }: ListRenderItemInf
   return (
     <TouchableHighlight
       onPress={() => {
-        { }
+        {}
       }}
       style={{
         flex: 1,
@@ -40,7 +40,7 @@ export const CharacterListGrid = ({ item, index, separators }: ListRenderItemInf
         flex: 1,
 
       }}>
-
+        
         <View style={{ flex: 0.7 }}>
           <Image style={{
             resizeMode: "cover", height: Sizing.layout.x90,

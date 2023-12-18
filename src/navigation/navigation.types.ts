@@ -12,7 +12,9 @@ import { NavigationState } from "react-native-tab-view";
 export type RootStackParamList = {
     // AuthNavigator: NavigatorScreenParams<AuthScreensList>;
     // AppNavigator: NavigatorScreenParams<AppScreensList>;
-    TabNavigator:NavigatorScreenParams<TabScreensList>
+    TabNavigator: NavigatorScreenParams<TabScreensList>
+    FilterModal: undefined;
+
 };
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> = StackScreenProps<RootStackParamList, T>;
@@ -29,7 +31,7 @@ export type RootStackScreenProps<T extends keyof RootStackParamList> = StackScre
 //     Character: undefined;
 //     Home: undefined;
 //     About: undefined;
- 
+
 // };
 
 
@@ -37,23 +39,22 @@ export type Route = {
     key: string;
     title: string;
     icon: any;
-  };
-  export type State = NavigationState<Route>;
+};
+export type State = NavigationState<Route>;
 
 
 export type TabScreensList = {
     Character: undefined;
-    Location:undefined;
-    Episode:undefined;
-   
- 
+    Location: undefined;
+    Episode: undefined;
 };
+
 
 export type AppScreenProps<T extends keyof TabScreensList> = NativeStackScreenProps<TabScreensList, T>;
 
 declare global {
     namespace ReactNavigation {
-        interface RootParamList extends RootStackParamList {}
+        interface RootParamList extends RootStackParamList { }
     }
 }
 

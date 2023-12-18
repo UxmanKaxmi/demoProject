@@ -14,6 +14,7 @@ import { RootState } from '@store/store'
 
 export const CharacterList = () => {
   const [pageCount, setPageCount] = useState(1)
+  
   const isGrid = useAppSelector((state: RootState) => state.isGrid.value)
   const { data, error, isLoading, isFetching } = useGetAllCharactersQuery(pageCount)
 
