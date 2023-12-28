@@ -4,6 +4,7 @@ export interface Character {
 }
 
 export interface ListResponse<T> {
+    info: any;
     // page: number
     // per_page: number
     // total: number

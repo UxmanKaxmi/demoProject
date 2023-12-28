@@ -14,7 +14,7 @@ import {
   SceneRendererProps,
 } from 'react-native-tab-view';
 
-import { Sizing, Typography } from '@styles/index';
+import { Colors, Sizing, Typography } from '@styles/index';
 import { Route, State } from './navigation.types';
 import rickIcon from "@imgs/rick-icon.png"
 import locationIcon from "@imgs/location-icon.png"
@@ -88,7 +88,7 @@ const CustomTabBar = () => {
     props: SceneRendererProps & { navigationState: State }
   ) => (
     <View >
-      <View style={{ flexDirection: "row" }}>
+      <View style={styles.taBarMainView}>
         {props.navigationState.routes.map((route: Route, index: number) => {
           return (
             <TouchableWithoutFeedback
@@ -130,10 +130,14 @@ const CustomTabBar = () => {
 export default CustomTabBar;
 
 const styles = StyleSheet.create({
-  tabbar: {
+  taBarMainView: {
+    
+    flexDirection: "row",
+    backgroundColor:Colors.neutral.white,
+  },
+  tabBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#fafafa',
   },
   tab: {
     flex: 1,

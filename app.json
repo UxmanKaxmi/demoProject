@@ -1,4 +1,5 @@
 {
   "name": "demoProject",
-  "displayName": "demoProject"
+  "displayName": "demoProject",
+  "main": "./src/App.tsx"
 }

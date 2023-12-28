@@ -1,8 +1,7 @@
-import { View, Text, TouchableHighlight, StyleSheet, Image, ListRenderItemInfo } from 'react-native'
-import React, { useMemo, useCallback } from 'react';
-import { ListRenderItem } from 'react-native'
+import { View, Text, TouchableHighlight, StyleSheet, Image, ListRenderItemInfo, Pressable } from 'react-native'
+import React from 'react';
 import { Result } from '../types/character-types';
-import { Colors, Sizing, Typography } from '@styles/index';
+import { Colors, Outlines, Sizing, Typography } from '@styles/index';
 
 
 
@@ -10,60 +9,62 @@ export const CharacterListGrid = ({ item, index, separators }: ListRenderItemInf
 
 
   return (
-    <TouchableHighlight
-      onPress={() => {
-        {}
-      }}
-      style={{
-        flex: 1,
-        marginHorizontal: Sizing.x10,
-        marginVertical: Sizing.x10,
-        backgroundColor: 'white',
-        shadowColor: "#FBFBFB",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-        width: Sizing.x120,
-        height: Sizing.x120,
-      }}
-      // underlayColor={"red"}
+    <Pressable
+      onPress={() => { }}
+      style={({ pressed }) => [
+        { opacity: pressed ? 0.8 : 1 },
+        styles.cardView
+      ]}
       key={index}
-      onShowUnderlay={separators.highlight}
-      onHideUnderlay={separators.unhighlight}
-    >
-      <View style={{
-        backgroundColor: '#FBFBFB',
-        flex: 1,
 
-      }}>
-        
+    >
+      <View style={styles.cardInnerView}>
+
         <View style={{ flex: 0.7 }}>
-          <Image style={{
-            resizeMode: "cover", height: Sizing.layout.x90,
-          }}
+          <Image style={styles.image}
             source={{ uri: item.image }}
           />
         </View>
 
-        <View style={{ alignContent: 'center', flex: 0.3, marginTop: Sizing.x15 }}>
-          <Text style={[{ fontWeight: "bold" }, Typography.fontSize.x10]}>{item.name}</Text>
-          <Text style={{}}>{item.species}</Text>
+        <View style={styles.nameView}>
+          <Text numberOfLines={1} style={[Typography.header.x20, styles.nameText]}>{item.name}</Text>
+          <Text >{item.species}</Text>
         </View>
 
 
       </View >
 
 
-    </TouchableHighlight >
+    </Pressable >
   )
 
 
 }
 
 const styles = StyleSheet.create({
+  image: {
+    resizeMode: "contain",
+    height: Sizing.layout.x90,
+  },
+  nameView: {
+    alignContent: 'center',
+    flex: 0.3,
+    padding: Sizing.x5
+  },
+  cardInnerView: {
+    minWidth: Sizing.screen.width / 3.5,
+    backgroundColor: Colors.card.background,
+  },
+  cardView: {
+    flex: 1,
+    marginHorizontal: Sizing.x10,
+    marginVertical: Sizing.x10,
+    backgroundColor: Colors.neutral.white,
+    ...Outlines.shadow.base
+  },
+  nameText: {
+
+
+  }
 
 });

@@ -5,6 +5,8 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import reactotron from "@config/reactotron-config"
 import selectedFilterReducer from "features/character/actions/selected-filter-slice";
 import isGridReducer from "@features/character/actions/is-grid-slice"
+import searchReducer from "@features/character/actions/search-text-slice"
+import pageCountReducer from "@features/character/actions/page-count-slice"
 
 
 //added for the null issue in ts reactatron
@@ -18,6 +20,8 @@ export const store = configureStore({
     [characterApi.reducerPath]: characterApi.reducer,
     isGrid: isGridReducer,
     selectedFilter: selectedFilterReducer,
+    search:searchReducer,
+    pageCount: pageCountReducer,
     counter: counterReducer
   },
   middleware: (getDefaultMiddleware) =>

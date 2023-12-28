@@ -3,25 +3,22 @@ import type { PayloadAction } from "@reduxjs/toolkit"
 
 
 
-// To save the filter in redux 
-//0 = no filter
-//1 = By Name
-//2 = By Gender
-//3 = By Species
+
 export interface FilterState {
-    value: Number
+    value: String
 }
 
 const initialState: FilterState = {
-    value: 0
+    value: "Name"
 }
 
 export const SelectedFilterSlice = createSlice({
-    name: "isGrid",
+    name: "filter",
     initialState,
     reducers: {
-        setFilter: (state, action: PayloadAction<number>) => {
+        setFilter: (state, action: PayloadAction<String>) => {
             state.value = action.payload
+
         }
 
     }

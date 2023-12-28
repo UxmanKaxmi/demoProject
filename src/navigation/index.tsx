@@ -3,9 +3,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Text, } from "react-native";
 import TabNavigator from "@navigation/tab-navigator";
 
-import BottomSheetComponent from "components/bottom-sheet";
+import BottomSheetComponent from "components/bottom-sheet/filter-sheet";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from "./navigation.types";
+import { Colors } from "styles";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -29,7 +30,11 @@ function ApplicationNavigator() {
           <Stack.Screen
             name="TabNavigator"
             component={TabNavigator}
-            options={{ headerShown: false }}
+            options={{
+              headerShown: false,
+              contentStyle: { backgroundColor: Colors.neutral.white }
+            }}
+
           />
         </Stack.Group>
 

@@ -12,6 +12,7 @@ type Neutral =
   | "s800"
   | "s900"
   | "black"
+
 export const neutral: Record<Neutral, string> = {
   white: "#ffffff",
   s100: "#efeff6",
@@ -26,6 +27,17 @@ export const neutral: Record<Neutral, string> = {
   s800: "#212123",
   s900: "#161617",
   black: "#000000",
+}
+
+type Card =
+  | "background"
+  | "s300"
+
+
+
+export const card: Record<Card, string> = {
+  background: "#FBFBFB",
+  s300: "#FFFFF0",
 }
 
 

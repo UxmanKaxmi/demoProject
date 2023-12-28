@@ -1,14 +1,14 @@
-import { View, Text, TouchableHighlight, StyleSheet, Image, ListRenderItemInfo } from 'react-native'
+import { View, Text, TouchableHighlight, StyleSheet, Image, ListRenderItemInfo, Pressable } from 'react-native'
 import React, { } from 'react';
 import { Result } from '../types/character-types';
-import { Colors, Sizing, Typography } from '@styles/index';
+import { Colors, Outlines, Sizing, Typography } from '@styles/index';
 
 
 
 export const CharacterListSingle = ({ item, index, separators }: ListRenderItemInfo<Result>) => {
   const MoreVal = "more..."
 
-  //Function to break the episodes to render in UI
+  // Function to break the episodes to render in UI
   const renderEpisodes = (episodes: any[]) => {
     let splitEpisodes = episodes.map((val) => {
       return val.split('episode/')[1]
@@ -18,8 +18,8 @@ export const CharacterListSingle = ({ item, index, separators }: ListRenderItemI
     if (splitEpisodes.length < 2) {
       return (
         <View key={index} style={{}}>
-          <View style={{ paddingVertical: Sizing.x1, backgroundColor: Colors.Episodes.brand, borderRadius: 15, width: Sizing.x40 }}>
-            <Text style={[Typography.body.x10, { textAlign: "center" }]}>{splitEpisodes[0]}
+          <View style={styles.episodesView}>
+            <Text style={[Typography.body.x10, { textAlign: 'center' }]}>{splitEpisodes[0]}
             </Text>
           </View>
         </View >
@@ -43,15 +43,9 @@ export const CharacterListSingle = ({ item, index, separators }: ListRenderItemI
 
           {showOnlyFour?.map((val, index) => {
             return (
-              <View key={index} style={{
-                paddingVertical: Sizing.x1,
+              <View key={index} style={[styles.episodesOuterView, {
                 backgroundColor: val == MoreVal ? "transparent" : Colors.Episodes.brand,
-                borderRadius: 15,
-                marginRight: Sizing.x10,
-                minWidth: Sizing.x40,
-                justifyContent: 'flex-end'
-
-              }}>
+              }]}>
                 <Text style={[val != MoreVal ? Typography.body.x10 : Typography.fontSize.x10, { textAlign: "center", }]}>
                   {val}
                 </Text>
@@ -65,55 +59,34 @@ export const CharacterListSingle = ({ item, index, separators }: ListRenderItemI
   }
 
   return (
-    <TouchableHighlight
-      onPress={() => {
-        { }
-      }}
-      style={{
-        marginHorizontal: Sizing.x10,
-        marginVertical: Sizing.x10,
-        backgroundColor: 'white',
-        shadowColor: "#FBFBFB",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-
-        elevation: 5,
-
-      }}
-      // underlayColor={"red"}
+    <Pressable
+      onPress={() => { }}
+      style={({ pressed }) => [
+        { opacity: pressed ? 0.8 : 1 },
+        styles.cardView
+      ]}
       key={index}
-      onShowUnderlay={separators.highlight}
-      onHideUnderlay={separators.unhighlight}
+
     >
-      <View style={{
+      <View style={styles.mainInnerView}>
 
-        backgroundColor: 'white',
-        flexDirection: "row",
-        // height: Sizing.layout.x110,
-        // width: Sizing.screen.width,
-        // marginVertical: Sizing.x10
-      }}>
+        <View style={styles.imageView}>
 
-        <View style={{ backgroundColor: '#FBFBFB', flex: 0.4 }}>
-          <Image style={{ height: Sizing.layout.x120, width: "100%", resizeMode: "cover" }}
+          <Image style={styles.image}
             source={{ uri: item.image }}
           />
         </View>
 
 
-        <View style={{ flex: 0.6, flexDirection: 'row', marginLeft: Sizing.x20, marginVertical: Sizing.x10 }}>
+        <View style={styles.cardViewOuter}>
 
-          <View style={{ flex: 1, }}>
+          <View style={{ flex: 1 }}>
 
-            <View style={{ flex: 0.7, justifyContent: 'space-between', }}>
+            <View style={styles.cardViewTop}>
 
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 1 }}>
+              <View style={styles.cardViewInner}>
                 <View style={{ flex: 1 }}>
-                  <Text style={[{ fontWeight: "bold" }, Typography.fontSize.x30]}>{item.name}</Text>
+                  <Text style={[Typography.header.x30]}>{item.name}</Text>
                   <Text style={{}}>{item.species}</Text>
                 </View>
 
@@ -121,12 +94,12 @@ export const CharacterListSingle = ({ item, index, separators }: ListRenderItemI
               </View>
 
 
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 1 }}>
+              <View style={styles.cardViewInner}>
                 <View style={{}}>
                   <Text style={[Typography.subheader.x10]}>Origin</Text>
 
 
-                  <View style={{ paddingHorizontal: Sizing.x10, paddingVertical: Sizing.x1, backgroundColor: Colors.Location.brand, borderRadius: 20, }}>
+                  <View style={styles.originView}>
                     <Text style={[Typography.body.x10]}>{item.origin.name}</Text>
                   </View>
                 </View>
@@ -143,7 +116,7 @@ export const CharacterListSingle = ({ item, index, separators }: ListRenderItemI
 
 
             <View style={{ flex: 0.4, }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 1 }}>
+              <View style={styles.cardViewInner}>
                 <View style={{ flex: 1 }}>
                   <Text style={[Typography.subheader.x10]}>Episodes</Text>
                   {renderEpisodes(item.episode)}
@@ -151,19 +124,71 @@ export const CharacterListSingle = ({ item, index, separators }: ListRenderItemI
                 </View>
               </View>
             </View>
-
-
           </View>
 
         </View>
       </View >
 
 
-    </TouchableHighlight >)
+    </Pressable >)
 
 
 }
 
 const styles = StyleSheet.create({
-
+  originView: {
+    paddingHorizontal: Sizing.x10,
+    paddingVertical: Sizing.x1,
+    backgroundColor: Colors.Location.brand,
+    borderRadius: 20,
+  },
+  cardViewInner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flex: 1,
+  },
+  cardViewTop: {
+    flex: 0.7,
+    justifyContent: 'space-between',
+  },
+  cardViewOuter: {
+    flex: 0.6,
+    flexDirection: 'row',
+    marginLeft: Sizing.x20,
+    marginVertical: Sizing.x10,
+  },
+  image: {
+    height: Sizing.layout.x120,
+    width: "100%",
+    resizeMode: "cover",
+  },
+  imageView: {
+    backgroundColor: Colors.card.background,
+    flex: 0.4,
+  },
+  mainInnerView: {
+    backgroundColor: Colors.card.background,
+    flexDirection: "row",
+  },
+  episodesOuterView: {
+    paddingVertical: Sizing.x1,
+    borderRadius: 15,
+    marginRight: Sizing.x10,
+    minWidth: Sizing.x40,
+    justifyContent: 'flex-end',
+  },
+  episodesView: {
+    paddingVertical: Sizing.x1,
+    backgroundColor: Colors.Episodes.brand,
+    borderRadius: 15,
+    width: Sizing.x40,
+  },
+  cardView: {
+    flex: 1,
+    marginHorizontal: Sizing.x10,
+    marginVertical: Sizing.x10,
+    backgroundColor: Colors.card.background,
+    ...Outlines.shadow.base
+  },
 });

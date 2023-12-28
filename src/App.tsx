@@ -11,6 +11,7 @@ import AppNavigator from './navigation';
 import 'react-native-gesture-handler';
 import { store } from "@store/store"
 import { Provider } from "react-redux"
+import "react-native-devsettings/withAsyncStorage";
 
 //for using Reactron debuggiing tool, more info at //https://github.com/infinitered/reactotron
 if (__DEV__) {
