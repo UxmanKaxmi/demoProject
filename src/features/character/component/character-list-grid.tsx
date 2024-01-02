@@ -1,11 +1,11 @@
 import { View, Text, TouchableHighlight, StyleSheet, Image, ListRenderItemInfo, Pressable } from 'react-native'
-import React from 'react';
+import React, { memo } from 'react';
 import { Result } from '../types/character-types';
 import { Colors, Outlines, Sizing, Typography } from '@styles/index';
 
 
 
-export const CharacterListGrid = ({ item, index, separators }: ListRenderItemInfo<Result>) => {
+const CharacterListGrid= ({ item, index, separators }: ListRenderItemInfo<Result>) => {
 
 
   return (
@@ -68,3 +68,4 @@ const styles = StyleSheet.create({
   }
 
 });
+export default memo(CharacterListGrid);

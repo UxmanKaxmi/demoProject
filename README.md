@@ -1,16 +1,23 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Packages Used
+# Packages 
+react-native-bootsplash
+https://github.com/zoontek/react-native-bootsplash
+
+react-native-element-dropdown
+
 react-native-dotenv
 https://www.npmjs.com/package/react-native-dotenv
 
 Reactron for debugging
-https://github.com/infinitered/reactotron
+https://github.com/infinitered/reactotron &
+react-native-devsettings
 
 For handling Typography
 https://github.com/hectahertz/react-native-typography
 
-
+lottie-react-native
+https://github.com/lottie-react-native/lottie-react-native#readme
 
 
 # Folder Structure 

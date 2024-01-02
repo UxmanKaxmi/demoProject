@@ -9,7 +9,7 @@ export interface FilterState {
 }
 
 const initialState: FilterState = {
-    value: "Name"
+    value: "Gender"
 }
 
 export const SelectedFilterSlice = createSlice({

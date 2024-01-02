@@ -10,7 +10,7 @@
           "@navigation": "./src/navigation",
           "@store": "./src/store",
           "@types": "./src/types",
-          "@assets": "./src/assets/assets",
+          "@assets": "./src/assets",
           "@imgs": "./src/assets/imgs",
           "@features": "./src/features",
           "@hooks": "./src/hooks",

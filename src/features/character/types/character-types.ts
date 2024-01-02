@@ -3,6 +3,9 @@ export interface Character {
     results: Result[];
 }
 
+
+  
+
 export interface ListResponse<T> {
     info: any;
     // page: number
@@ -41,10 +44,10 @@ export interface Result {
 }
 
 export enum Gender {
-    Female = "Female",
-    Male = "Male",
-    Unknown = "unknown",
-}
+    MALE = 'MALE',
+    FEMALE = 'FEMALE',
+    OTHER = 'UNKNOWN'
+  };
 
 export interface Location {
     name: string;
@@ -59,5 +62,5 @@ export enum Species {
 export enum Status {
     Alive = "Alive",
     Dead = "Dead",
-    Unknown = "unknown",
+    Unknown = "Unknown",
 }

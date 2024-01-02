@@ -1,19 +1,20 @@
 import { View, Text, TouchableHighlight, StyleSheet, Image, ListRenderItemInfo, Pressable } from 'react-native'
-import React, { } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import { Result } from '../types/character-types';
 import { Colors, Outlines, Sizing, Typography } from '@styles/index';
 
 
+  const CharacterListSingle = ({ item, index, separators }: ListRenderItemInfo<Result>) => {
 
-export const CharacterListSingle = ({ item, index, separators }: ListRenderItemInfo<Result>) => {
   const MoreVal = "more..."
+  
 
-  // Function to break the episodes to render in UI
-  const renderEpisodes = (episodes: any[]) => {
+ // Function to break the episodes to render in UI
+ const renderEpisodes = useCallback((episodes: any[]) => {
+
     let splitEpisodes = episodes.map((val) => {
       return val.split('episode/')[1]
     })
-
 
     if (splitEpisodes.length < 2) {
       return (
@@ -56,84 +57,84 @@ export const CharacterListSingle = ({ item, index, separators }: ListRenderItemI
       )
     }
 
-  }
+  },[]
+ )
+
 
   return (
-    <Pressable
-      onPress={() => { }}
-      style={({ pressed }) => [
-        { opacity: pressed ? 0.8 : 1 },
-        styles.cardView
-      ]}
-      key={index}
+  <Pressable
+    onPress={() => { }}
+    style={({ pressed }) => [
+      { opacity: pressed ? 0.8 : 1 },
+      styles.cardView
+    ]}
+    key={index}
 
-    >
-      <View style={styles.mainInnerView}>
+  >
+    <View style={styles.mainInnerView}>
 
-        <View style={styles.imageView}>
+      <View style={styles.imageView}>
 
-          <Image style={styles.image}
-            source={{ uri: item.image }}
-          />
-        </View>
-
-
-        <View style={styles.cardViewOuter}>
-
-          <View style={{ flex: 1 }}>
-
-            <View style={styles.cardViewTop}>
-
-              <View style={styles.cardViewInner}>
-                <View style={{ flex: 1 }}>
-                  <Text style={[Typography.header.x30]}>{item.name}</Text>
-                  <Text style={{}}>{item.species}</Text>
-                </View>
+        <Image style={styles.image}
+          source={{ uri: item.image }}
+        />
+      </View>
 
 
+      <View style={styles.cardViewOuter}>
+
+        <View style={{ flex: 1 }}>
+
+          <View style={styles.cardViewTop}>
+
+            <View style={styles.cardViewInner}>
+              <View style={{ flex: 1 }}>
+                <Text style={[Typography.header.x30]}>{item.name}</Text>
+                <Text style={{}}>{item.species}</Text>
               </View>
 
-
-              <View style={styles.cardViewInner}>
-                <View style={{}}>
-                  <Text style={[Typography.subheader.x10]}>Origin</Text>
-
-
-                  <View style={styles.originView}>
-                    <Text style={[Typography.body.x10]}>{item.origin.name}</Text>
-                  </View>
-                </View>
-
-                {/* <View style={{ flex: 0.25 }}>
-                      <Text style={[Typography.subheader.x10]}>Gender</Text>
-                      <Text style={[Typography.body.x10]}>{item.gender}</Text>
-                    </View> */}
-
-              </View>
 
             </View>
 
 
+            <View style={styles.cardViewInner}>
+              <View style={{}}>
+                <Text style={[Typography.subheader.x10]}>Origin</Text>
 
-            <View style={{ flex: 0.4, }}>
-              <View style={styles.cardViewInner}>
-                <View style={{ flex: 1 }}>
-                  <Text style={[Typography.subheader.x10]}>Episodes</Text>
-                  {renderEpisodes(item.episode)}
 
+                <View style={styles.originView}>
+                  <Text style={[Typography.body.x10]}>{item.origin.name}</Text>
                 </View>
               </View>
+
+              {/* <View style={{ flex: 0.25 }}>
+                    <Text style={[Typography.subheader.x10]}>Gender</Text>
+                    <Text style={[Typography.body.x10]}>{item.gender}</Text>
+                  </View> */}
+
             </View>
           </View>
 
+          <View style={{ flex: 0.4, }}>
+            <View style={styles.cardViewInner}>
+              <View style={{ flex: 1 }}>
+                <Text style={[Typography.subheader.x10]}>Episodes</Text>
+                {renderEpisodes(item.episode)}
+
+              </View>
+            </View>
+          </View>
         </View>
-      </View >
+
+      </View>
+    </View >
 
 
-    </Pressable >)
+  </Pressable >
+  );
+};
 
-
-}
+export default memo(CharacterListSingle);
 
 const styles = StyleSheet.create({
   originView: {
@@ -192,3 +193,4 @@ const styles = StyleSheet.create({
     ...Outlines.shadow.base
   },
 });
+

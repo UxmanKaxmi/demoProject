@@ -1,4 +1,5 @@
 // metro.config.js
+
 const { mergeConfig } = require('metro-config');
 
 const configA = {

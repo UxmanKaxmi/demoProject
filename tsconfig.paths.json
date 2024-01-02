@@ -5,16 +5,16 @@
       "*": ["./src/*"],
       "@navigation/*": ["./src/navigation/*"],
       "@store/*": ["./src/store/*"],
-      "@types/*": ["src/types/*"],
+      "@types/*": ["./src/types/*"],
       "@assets/*": ["./src/assets/*"],
       "@imgs/*": ["./src/assets/imgs/*"],
       "@features/*": ["./src/features/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@utils/*": ["./src/utils/*"],
-      "@config/*": ["src/config/*"],
-      "@service/*": ["src/service/*"],
-      "@components/*": ["src/components/*"],
-      "@styles/*": ["src/styles/*"],
+      "@config/*": ["./src/config/*"],
+      "@service/*": ["./src/service/*"],
+      "@components/*": ["./src/components/*"],
+      "@styles/*": ["./src/styles/*"],
       "@screens/*": ["./src/screens/*"]
     }
   }

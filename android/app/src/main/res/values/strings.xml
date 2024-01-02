@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">demoProject</string>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Your base theme customization -->
+    </style>
+  
+    <!-- BootTheme should inherit from Theme.BootSplash or Theme.BootSplash.EdgeToEdge -->
+    <style name="BootTheme" parent="Theme.BootSplash">
+      <item name="bootSplashBackground">@color/bootsplash_background</item>
+      <item name="bootSplashLogo">@drawable/bootsplash_logo</item>
+      <item name="bootSplashBrand">@drawable/bootsplash_brand</item> <!-- Only if you have a brand image -->
+      <item name="postBootSplashTheme">@style/AppTheme</item>
+    </style>
 </resources>

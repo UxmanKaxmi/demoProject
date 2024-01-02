@@ -4,10 +4,11 @@ import { createSelector, current } from "@reduxjs/toolkit";
 
 
 
-export const characterApi = defaultSplitApi.injectEndpoints({
+export const GetCharacterApi = defaultSplitApi.injectEndpoints({
     endpoints: (builder) => ({
         getAllCharacters: builder.query<ListResponse<Result>, { page: number; name: string }>({
             query: (arg) => {
+                console.log('default API', arg)
                 const { page } = arg;
                 return `character/?page=${page}`
             },
@@ -50,6 +51,7 @@ export const characterApi = defaultSplitApi.injectEndpoints({
         }),
         getCharacterByName: builder.query<ListResponse<Result>, { page: number; name: string }>({
             query: (arg) => {
+                console.log('By name API', arg)
                 const { page, name } = arg;
                 return `character/?page=${page}&name=${name}`
             },
@@ -93,7 +95,7 @@ export const characterApi = defaultSplitApi.injectEndpoints({
 
 // Export hooks for usage in functional components
 export const { useGetAllCharactersQuery, useLazyGetAllCharactersQuery, useGetCharacterByNameQuery
-} = characterApi
+} = GetCharacterApi
 // .enhanceEndpoints({
 //     endpoints: {
 //         getAllCharacters: {

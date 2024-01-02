@@ -1,6 +1,6 @@
 import { StoreEnhancer, configureStore } from "@reduxjs/toolkit";
 import counterReducer from "../features/counter/actions/counterSlice"
-import { characterApi } from "@features/character";
+import { GetCharacterApi } from "@features/character";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import reactotron from "@config/reactotron-config"
 import selectedFilterReducer from "features/character/actions/selected-filter-slice";
@@ -17,7 +17,7 @@ if (reactotron.createEnhancer) {
 
 export const store = configureStore({
   reducer: {
-    [characterApi.reducerPath]: characterApi.reducer,
+    [GetCharacterApi.reducerPath]: GetCharacterApi.reducer,
     isGrid: isGridReducer,
     selectedFilter: selectedFilterReducer,
     search:searchReducer,
@@ -25,7 +25,7 @@ export const store = configureStore({
     counter: counterReducer
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(characterApi.middleware),
+    getDefaultMiddleware().concat(GetCharacterApi.middleware),
   enhancers: (getDefaultEnhancers) => getDefaultEnhancers().concat(enhancers),
 
 });
