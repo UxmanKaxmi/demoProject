@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { FLATLIST_VIEW } from "../constants"
 
 
 
@@ -12,7 +13,7 @@ const initialState: GridState = {
 }
 
 export const isGridSlice = createSlice({
-    name: "isGrid",
+    name: FLATLIST_VIEW.GRID,
     initialState,
     reducers: {
         setIsGrid: (state) => {

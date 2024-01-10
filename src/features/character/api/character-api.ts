@@ -20,7 +20,7 @@ export const GetCharacterApi = defaultSplitApi.injectEndpoints({
 
             // Always merge incoming data to the cache entry
             merge: (currentCache, newItems) => {
-                if(currentCache !== newItems){
+                if(currentCache.results !== newItems.results){
                     currentCache.results.push(...newItems.results)
                 }
             },
@@ -57,10 +57,47 @@ export const GetCharacterApi = defaultSplitApi.injectEndpoints({
             },
 
 
-            // // Only have one cache entry because the arg always maps to one string
-            // serializeQueryArgs: ({ queryArgs, endpointDefinition, endpointName }) => {
-            //     return endpointName 
-            //   },
+            // Only have one cache entry because the arg always maps to one string
+            serializeQueryArgs: ({ queryArgs, endpointDefinition, endpointName }) => {
+                return endpointName 
+              },
+
+            // Always merge incoming data to the cache entry
+            merge: (currentCache, newItems) => {     
+
+                //  console.log("Cache Same",JSON.stringify(newItems.results) === JSON.stringify(currentCache.results))
+                   if(currentCache.results !== newItems.results){
+                    currentCache.results.push(...newItems.results)
+                }
+            },
+
+
+            // // Refetch when the page arg changes
+            forceRefetch({ currentArg, previousArg }) {
+                return currentArg !== previousArg
+            },
+
+
+            providesTags: ["CharactersByName"]
+            // Invalidates the tag for this Post `id`, as well as the `PARTIAL-LIST` tag,
+            // causing the `listPosts` query to re-fetch if a component is subscribed to the query.
+
+        }),
+        getCharacterByGender: builder.query<ListResponse<Result>, { page: number; name: string, gender: string }>({
+            query: (arg) => {
+                console.log('By name Gender API', arg)
+                const { page, name, gender } = arg;
+
+                if(gender==""){
+                    return "error"
+                }
+                else{
+                    return `character/?page=${page}&gender=${gender}`  //&name=${name}
+
+                }
+            
+            },
+      
 
             // Always merge incoming data to the cache entry
             serializeQueryArgs: ({ queryArgs, endpointDefinition, endpointName }) => {
@@ -81,11 +118,45 @@ export const GetCharacterApi = defaultSplitApi.injectEndpoints({
             },
 
 
-            providesTags: ["CharactersByName"]
+            providesTags: ["CharactersByGender"]
             // Invalidates the tag for this Post `id`, as well as the `PARTIAL-LIST` tag,
             // causing the `listPosts` query to re-fetch if a component is subscribed to the query.
 
         }),
+        getCharacterBySpecies: builder.query<ListResponse<Result>, { page: number; species: string }>({
+            query: (arg) => {
+                console.log('By species API', arg)
+                const { page, species } = arg;
+                return `character/?page=${page}&species=${species}`
+            },
+
+
+            // Only have one cache entry because the arg always maps to one string
+            serializeQueryArgs: ({ queryArgs, endpointDefinition, endpointName }) => {
+                return endpointName 
+              },
+
+            // Always merge incoming data to the cache entry
+            merge: (currentCache, newItems) => {     
+                //  console.log("Cache Same",JSON.stringify(newItems.results) === JSON.stringify(currentCache.results))
+                   if(currentCache.results !== newItems.results){
+                    currentCache.results.push(...newItems.results)
+                }
+            },
+
+
+            // // Refetch when the page arg changes
+            forceRefetch({ currentArg, previousArg }) {
+                return currentArg !== previousArg
+            },
+
+
+            providesTags: ["CharactersBySpecies"]
+            // Invalidates the tag for this Post `id`, as well as the `PARTIAL-LIST` tag,
+            // causing the `listPosts` query to re-fetch if a component is subscribed to the query.
+
+        }),
+        
     }),
     overrideExisting: true,
 
@@ -94,7 +165,13 @@ export const GetCharacterApi = defaultSplitApi.injectEndpoints({
 
 
 // Export hooks for usage in functional components
-export const { useGetAllCharactersQuery, useLazyGetAllCharactersQuery, useGetCharacterByNameQuery
+export const { 
+    useGetAllCharactersQuery, 
+    useLazyGetAllCharactersQuery, 
+    useGetCharacterByNameQuery,
+    useLazyGetCharacterByNameQuery,
+    useGetCharacterByGenderQuery,
+    useGetCharacterBySpeciesQuery
 } = GetCharacterApi
 // .enhanceEndpoints({
 //     endpoints: {

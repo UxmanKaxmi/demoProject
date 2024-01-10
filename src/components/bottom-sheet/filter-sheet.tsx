@@ -1,5 +1,5 @@
 import React, { useCallback, useState, } from "react";
-import { StyleSheet, View, Text, Pressable, Image, } from "react-native";
+import { StyleSheet, View, Text, Pressable, Image, TouchableWithoutFeedback, } from "react-native";
 
 
 
@@ -14,12 +14,12 @@ import speciesIcon from "@imgs/species-icon.png"
 import idIcon from "@imgs/id-icon.png"
 
 import { useNavigation } from '@react-navigation/native';
+import { FILTER_CHARACTER } from "features/character";
 
 
 const closeIcon = <Icon name="close" size={Sizing.icons.x30} color={Colors.neutral.black} />;
 const selectedIcon = <Icon name="check" size={Sizing.icons.x30} color={Colors.neutral.black} />;
 const ByName = <Icon name="user" size={Sizing.icons.x30} color={Colors.neutral.black} />;
-
 
 const BottomSheetComponent = () => {
     const navigation = useNavigation();
@@ -32,7 +32,8 @@ const BottomSheetComponent = () => {
     }, []);
 
     return (
-        <View style={styles.container}>
+        <Pressable onPress={()=>navigation.goBack()}  style={styles.container}>
+            {/* <Pressable onPress={()=>navigation.goBack()} style={{backgroundColor:'red',height:'100%'}} > */}
             <View style={styles.innerContainer}>
 
                 <View style={[, styles.modalHeadingView]}>
@@ -54,7 +55,7 @@ const BottomSheetComponent = () => {
                         { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
                         styles.button
                     ]}
-                    onPress={() => dispatch(setFilter("Name"))}
+                    onPress={() => dispatch(setFilter(FILTER_CHARACTER.NAME))}
                 >
                     <View style={styles.byNameView}>
                         <View style={styles.byNameInnerView}>
@@ -77,7 +78,7 @@ const BottomSheetComponent = () => {
                     { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
                     styles.button
                 ]}
-                    onPress={() => dispatch(setFilter("Gender"))}
+                    onPress={() => dispatch(setFilter(FILTER_CHARACTER.GENDER))}
 
                 >
                     <View style={styles.byNameView}>
@@ -102,7 +103,7 @@ const BottomSheetComponent = () => {
                     { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
                     styles.button
                 ]}
-                    onPress={() => dispatch(setFilter("Species"))}
+                    onPress={() => dispatch(setFilter(FILTER_CHARACTER.SPECIES))}
 
                 >
                     <View style={styles.byNameView}>
@@ -122,7 +123,8 @@ const BottomSheetComponent = () => {
                     </View>
                 </Pressable>
             </View>
-        </View>
+            {/* </Pressable> */}
+        </Pressable>
 
     );
 };
@@ -170,10 +172,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'flex-end',
+        
 
 
     },
     innerContainer: {
+     
         paddingVertical: Sizing.x30,
         backgroundColor: Colors.neutral.s100,
         borderTopRightRadius: Outlines.borderRadius.large,

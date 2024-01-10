@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
+import { FILTER_CHARACTER } from "../constants"
 
 
 
@@ -9,11 +10,11 @@ export interface FilterState {
 }
 
 const initialState: FilterState = {
-    value: "Gender"
+    value: FILTER_CHARACTER.NAME
 }
 
 export const SelectedFilterSlice = createSlice({
-    name: "filter",
+    name: "Filter",
     initialState,
     reducers: {
         setFilter: (state, action: PayloadAction<String>) => {

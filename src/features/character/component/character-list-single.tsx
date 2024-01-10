@@ -6,7 +6,7 @@ import { Colors, Outlines, Sizing, Typography } from '@styles/index';
 
   const CharacterListSingle = ({ item, index, separators }: ListRenderItemInfo<Result>) => {
 
-  const MoreVal = "more..."
+  const MoreVal =  useMemo(()=>  "more...",[]) 
   
 
  // Function to break the episodes to render in UI
@@ -47,7 +47,7 @@ import { Colors, Outlines, Sizing, Typography } from '@styles/index';
               <View key={index} style={[styles.episodesOuterView, {
                 backgroundColor: val == MoreVal ? "transparent" : Colors.Episodes.brand,
               }]}>
-                <Text style={[val != MoreVal ? Typography.body.x10 : Typography.fontSize.x10, { textAlign: "center", }]}>
+                <Text style={[Typography.fontSize.x1 , { textAlign: "center", }]}>
                   {val}
                 </Text>
               </View>
@@ -74,7 +74,6 @@ import { Colors, Outlines, Sizing, Typography } from '@styles/index';
     <View style={styles.mainInnerView}>
 
       <View style={styles.imageView}>
-
         <Image style={styles.image}
           source={{ uri: item.image }}
         />
@@ -84,16 +83,12 @@ import { Colors, Outlines, Sizing, Typography } from '@styles/index';
       <View style={styles.cardViewOuter}>
 
         <View style={{ flex: 1 }}>
-
           <View style={styles.cardViewTop}>
-
             <View style={styles.cardViewInner}>
               <View style={{ flex: 1 }}>
                 <Text style={[Typography.header.x30]}>{item.name}</Text>
                 <Text style={{}}>{item.species}</Text>
               </View>
-
-
             </View>
 
 
@@ -156,7 +151,7 @@ const styles = StyleSheet.create({
   cardViewOuter: {
     flex: 0.6,
     flexDirection: 'row',
-    marginLeft: Sizing.x20,
+    marginLeft: Sizing.x15,
     marginVertical: Sizing.x10,
   },
   image: {
@@ -173,9 +168,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   episodesOuterView: {
-    paddingVertical: Sizing.x1,
+    paddingVertical: Sizing.x2,
     borderRadius: 15,
-    marginRight: Sizing.x10,
+    marginRight: Sizing.x7,
     minWidth: Sizing.x40,
     justifyContent: 'flex-end',
   },

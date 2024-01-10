@@ -1,5 +1,4 @@
 import { StoreEnhancer, configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../features/counter/actions/counterSlice"
 import { GetCharacterApi } from "@features/character";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import reactotron from "@config/reactotron-config"
@@ -7,6 +6,8 @@ import selectedFilterReducer from "features/character/actions/selected-filter-sl
 import isGridReducer from "@features/character/actions/is-grid-slice"
 import searchReducer from "@features/character/actions/search-text-slice"
 import pageCountReducer from "@features/character/actions/page-count-slice"
+import genderReducer from "@features/character/actions/gender-slice"
+
 
 
 //added for the null issue in ts reactatron
@@ -20,12 +21,12 @@ export const store = configureStore({
     [GetCharacterApi.reducerPath]: GetCharacterApi.reducer,
     isGrid: isGridReducer,
     selectedFilter: selectedFilterReducer,
-    search:searchReducer,
+    search: searchReducer,
     pageCount: pageCountReducer,
-    counter: counterReducer
+    gender: genderReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(GetCharacterApi.middleware),
+  getDefaultMiddleware().concat(GetCharacterApi.middleware),
   enhancers: (getDefaultEnhancers) => getDefaultEnhancers().concat(enhancers),
 
 });

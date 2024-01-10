@@ -1,17 +1,17 @@
 import { View, ActivityIndicator, StyleSheet } from 'react-native'
-import React, { useCallback, useMemo } from 'react'
+import React, { memo } from 'react'
 import LottieView from "lottie-react-native";
 import { Sizing } from 'styles';
 
 
-interface isAnimProps {
-    isAnim?: boolean,
+interface loadingProps {
+    isAnimation?: boolean,
 }
 
-const Loading: React.FC<isAnimProps> = (props: isAnimProps) => {
+const Loading: React.FC<loadingProps> = (props: loadingProps) => {
 
 
-    if (props?.isAnim) {
+    if (props?.isAnimation) {
         return (
 
             <View style={{ flex:1,alignSelf:"center", justifyContent:'center' }}>
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
     horizontal: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        padding: 10,
+        padding: Sizing.x10,
     },
 });
 
-export default Loading;
+export default memo(Loading);
