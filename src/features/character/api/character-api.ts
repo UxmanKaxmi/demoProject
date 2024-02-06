@@ -1,5 +1,5 @@
 import { defaultSplitApi } from "@service/index"
-import type { Character, ListResponse, Result } from '../types/character-types'
+import type { ListResponse, Result } from '../types/character-types'
 import { createSelector, current } from "@reduxjs/toolkit";
 
 
@@ -65,7 +65,6 @@ export const GetCharacterApi = defaultSplitApi.injectEndpoints({
             // Always merge incoming data to the cache entry
             merge: (currentCache, newItems) => {     
 
-                //  console.log("Cache Same",JSON.stringify(newItems.results) === JSON.stringify(currentCache.results))
                    if(currentCache.results !== newItems.results){
                     currentCache.results.push(...newItems.results)
                 }
@@ -138,7 +137,6 @@ export const GetCharacterApi = defaultSplitApi.injectEndpoints({
 
             // Always merge incoming data to the cache entry
             merge: (currentCache, newItems) => {     
-                //  console.log("Cache Same",JSON.stringify(newItems.results) === JSON.stringify(currentCache.results))
                    if(currentCache.results !== newItems.results){
                     currentCache.results.push(...newItems.results)
                 }

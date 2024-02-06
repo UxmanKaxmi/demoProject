@@ -20,13 +20,13 @@ import { useNavigation } from '@react-navigation/core';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 // import { useLazyGetCharactersByNameQuery } from '../api/get-all-characters';
-import { setSearchTextInRedux } from '../actions/search-text-slice';
-import { useGetAllCharactersQuery, useLazyGetAllCharactersQuery } from '../api/character-api';
-import { setPageCountInRedux } from '../actions/page-count-slice';
+import { setSearchTextInRedux } from '../../features/character/actions/search-text-slice';
+import { useGetAllCharactersQuery, useLazyGetAllCharactersQuery } from '../../features/character/api/character-api';
+import { setPageCountInRedux } from '../../features/character/actions/page-count-slice';
 import { defaultSplitApi } from 'service';
 import { Dropdown } from 'react-native-element-dropdown';
 import { fontSize } from 'styles/typography';
-import { setGender } from '../actions/gender-slice';
+import { setGender } from '../../features/character/actions/gender-slice';
 
 
 const dropDownData = [
@@ -40,7 +40,7 @@ const dropDownData = [
 
 
 //its the search bar with the view button to change it into a GRID or LIST
-export const ChangeViewTab: React.FC = ({ }) => {
+export const SearchTab: React.FC = ({ }) => {
 
   /*Constants*/
   const [dropDownValue, setDropDownValue] = useState<string>("");
@@ -95,7 +95,6 @@ export const ChangeViewTab: React.FC = ({ }) => {
   }
 
   useEffect(() => {
-    console.log("search useeEffect")
 
     if (searchValue === "") {
       dispatch(defaultSplitApi.util.resetApiState())

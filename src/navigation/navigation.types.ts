@@ -6,6 +6,8 @@ import type {
 import type { StackScreenProps } from "@react-navigation/stack";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { NavigationState } from "react-native-tab-view";
+import { Result } from "features/character";
+import { Result as TypesLocation } from "features/location";
 
 
 
@@ -14,6 +16,11 @@ export type RootStackParamList = {
     // AppNavigator: NavigatorScreenParams<AppScreensList>;
     TabNavigator: NavigatorScreenParams<TabScreensList>
     FilterModal: undefined;
+    // Detail: NavigatorScreenParams<Result>;
+
+    DetailCharacter: Result | undefined;
+    DetailLocation: TypesLocation | undefined;
+
 
 };
 

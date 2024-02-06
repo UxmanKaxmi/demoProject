@@ -1,17 +1,17 @@
 import { View, Text, TouchableHighlight, StyleSheet, Image, ListRenderItemInfo, Pressable } from 'react-native'
 import React, { memo } from 'react';
-import { Result } from '../types/character-types';
 import { Colors, Outlines, Sizing, Typography } from '@styles/index';
 import { useNavigation } from '@react-navigation/native';
+import { Result } from '../types/location-types';
 
 
 
-const CharacterListGrid= ({ item, index, separators }: ListRenderItemInfo<Result>) => {
+const LocationListGrid= ({ item, index, separators }: ListRenderItemInfo<Result>) => {
   const navigation = useNavigation()
 
   return (
     <Pressable
-    onPress={() => navigation.navigate("DetailCharacter",item)}
+      onPress={() => navigation.navigate("DetailLocation", item)}
       style={({ pressed }) => [
         { opacity: pressed ? 0.8 : 1 },
         styles.cardView
@@ -20,20 +20,12 @@ const CharacterListGrid= ({ item, index, separators }: ListRenderItemInfo<Result
 
     >
       <View style={styles.cardInnerView}>
-
-        <View style={{ flex: 0.7 }}>
-          <Image style={styles.image}
-            source={{ uri: item.image }}
-          />
+        <View style={{ flex: 1 }}>
+          <Text style={[Typography.header.x10,{marginBottom:Sizing.x5}]}>{item?.name}</Text>
+          <Text style={[Typography.fontSize.x1]}>{item.type}</Text>
         </View>
+      </View>
 
-        <View style={styles.nameView}>
-          <Text numberOfLines={1} style={[Typography.header.x20, styles.nameText]}>{item.name}</Text>
-          <Text >{item.species}</Text>
-        </View>
-
-
-      </View >
 
 
     </Pressable >
@@ -69,4 +61,4 @@ const styles = StyleSheet.create({
   }
 
 });
-export default memo(CharacterListGrid);
+export default memo(LocationListGrid);

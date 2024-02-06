@@ -1,5 +1,5 @@
 import { LocationScreen, EpisodeScreen, CharacterScreen } from '@screens/index';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Animated,
   View,
@@ -19,7 +19,10 @@ import { Route, State } from './navigation.types';
 import rickIcon from "@imgs/rick-icon.png"
 import locationIcon from "@imgs/location-icon.png"
 import episodeIcon from "@imgs/episode-icon.png"
-import { ChangeViewTab } from '@features/character';
+import { SearchTab } from '@features/character';
+import { RootState } from 'store/store';
+import { useAppSelector,useAppDispatch } from 'hooks';
+import { setSelectedTabInRedux } from 'features/location/actions/selected-tab-slice';
 
 
 
@@ -27,10 +30,10 @@ import { ChangeViewTab } from '@features/character';
 
 
 const CustomTabBar = () => {
-
-
   const [index, onIndexChange] = useState(0);
+  const dispatch = useAppDispatch()
 
+  const selectedTabIndex = useAppSelector((state: RootState) => state.selectedTabIndex.selectedTab)
 
   const [routes] = useState<Route[]>([
     { key: 'character', title: 'Character', icon: rickIcon },
@@ -39,6 +42,10 @@ const CustomTabBar = () => {
 
   ]);
 
+  useEffect(() => {
+    dispatch(setSelectedTabInRedux(index))
+  }, [index])
+  
 
 
 
@@ -102,7 +109,7 @@ const CustomTabBar = () => {
         })}
       </View>
 
-      <ChangeViewTab />
+      <SearchTab />
     </View>
   );
 
@@ -131,9 +138,9 @@ export default CustomTabBar;
 
 const styles = StyleSheet.create({
   taBarMainView: {
-    
+
     flexDirection: "row",
-    backgroundColor:Colors.neutral.white,
+    backgroundColor: Colors.neutral.white,
   },
   tabBar: {
     flexDirection: 'row',

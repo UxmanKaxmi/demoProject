@@ -7,6 +7,7 @@ import isGridReducer from "@features/character/actions/is-grid-slice"
 import searchReducer from "@features/character/actions/search-text-slice"
 import pageCountReducer from "@features/character/actions/page-count-slice"
 import genderReducer from "@features/character/actions/gender-slice"
+import selectedTabIndexReducer from "@features/location/actions/selected-tab-slice"
 
 
 
@@ -24,6 +25,8 @@ export const store = configureStore({
     search: searchReducer,
     pageCount: pageCountReducer,
     gender: genderReducer,
+    selectedTabIndex:selectedTabIndexReducer
+    
   },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware().concat(GetCharacterApi.middleware),

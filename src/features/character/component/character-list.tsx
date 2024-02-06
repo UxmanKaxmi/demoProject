@@ -1,11 +1,14 @@
 import { View, Text, FlatList, StyleSheet, FlatListProps, TouchableOpacity, ListRenderItemInfo } from 'react-native'
 import React, { useEffect, useState, SetStateAction, useRef, useMemo } from 'react'
 
-import { useGetAllCharactersQuery, useGetCharacterByGenderQuery, useLazyGetCharacterByNameQuery,useGetCharacterByNameQuery, useGetCharacterBySpeciesQuery } from 'features/character/api/character-api'
 import Loading from "@components/loading"
-// import  CharacterListSingle  from './character-list-single'
-// import { useGetPokemonQuery } from '@config/pokemon'
-import { Result } from '../types/character-types';
+import {
+  Result,
+  useGetAllCharactersQuery,
+  useGetCharacterByGenderQuery,
+  useGetCharacterByNameQuery,
+  useGetCharacterBySpeciesQuery,
+} from '@features/character';
 import { Colors, Sizing } from '@styles/index'
 import CharacterListGrid from './character-list-grid'
 import { useAppDispatch, useAppSelector } from '@hooks/index'
@@ -40,6 +43,7 @@ export const CharacterList = () => {
 
   const FilteredValue = useAppSelector((state: RootState) => state.selectedFilter.value)
   const GenderValue = useAppSelector((state: RootState) => state.gender.value)
+  const selectedTabIndex = useAppSelector((state: RootState) => state.selectedTabIndex.selectedTab)
 
   const dispatch = useAppDispatch()
 
@@ -51,7 +55,7 @@ export const CharacterList = () => {
     isLoading: CharacterAllIsLoading,
     isFetching: CharacterAllIsFetching
   } = useGetAllCharactersQuery({ page: pageCount, name: "" },
-    { skip: FilteredValue == "Name" && searchTextFromRedux !== "" && GenderValue == ""  || FilteredValue == "Species"})
+    { skip: FilteredValue == "Name" && searchTextFromRedux !== "" || FilteredValue == "Gender" || FilteredValue == "Species"|| selectedTabIndex != 0 })
 
 
 
@@ -61,9 +65,9 @@ export const CharacterList = () => {
     isLoading: CharacterByNameIsLoading,
     isFetching: CharacterByNameIsFetching
   } = useGetCharacterByNameQuery({ page: pageCount, name: searchTextFromRedux },
-    { skip: FilteredValue == "Name" && searchTextFromRedux == "" && GenderValue == "" || FilteredValue == "Species"})
+    { skip: FilteredValue == "Name" && searchTextFromRedux == "" || FilteredValue == "Gender" || FilteredValue == "Species"  })
 
-  
+
   // const [getCharacterByName,{
   //   data: CharacterByNameData,
   //   error: CharacterByNameError,
@@ -78,7 +82,7 @@ export const CharacterList = () => {
     isLoading: CharacterByGenderIsLoading,
     isFetching: CharacterByGenderIsFetching
   } = useGetCharacterByGenderQuery({ page: pageCount, name: "", gender: GenderValue },
-    { skip: FilteredValue !== "Gender"  })
+    { skip: FilteredValue !== "Gender" })
 
 
 
@@ -88,7 +92,7 @@ export const CharacterList = () => {
     isLoading: CharacterBySpeciesIsLoading,
     isFetching: CharacterBySpeciesIsFetching
   } = useGetCharacterBySpeciesQuery({ page: pageCount, species: searchTextFromRedux },
-    { skip: FilteredValue !== "Species" && searchTextFromRedux == "" })
+    { skip: FilteredValue !== "Species" && searchTextFromRedux == "" || FilteredValue == "Name" })
 
 
 
@@ -99,7 +103,6 @@ export const CharacterList = () => {
 
   //     //set isRefreshing to true
   //     const result = await refetch()
-  //     console.log(result)
   //     setIsRefreshing(false)
 
 
@@ -107,38 +110,27 @@ export const CharacterList = () => {
   // }
 
   useEffect(() => {
-    // console.log("xx FilteredValue",FilteredValue)
-    // console.log("xx searchTextFromRedux",searchTextFromRedux)
 
-     if (FilteredValue === "Name" && searchTextFromRedux  === "") {
-      console.log('in name')
+    if (FilteredValue === "Name" && searchTextFromRedux === "") {
       setResultsAfterFilter(CharacterAllData)
-     }
-     else if(FilteredValue === "Name" && searchTextFromRedux  !== "" ){
-       console.log('in BY name')
+    }
+    else if (FilteredValue === "Name" && searchTextFromRedux !== "") {
       //  getCharacterByName({ page: pageCount, name: searchTextFromRedux })
-       setResultsAfterFilter(CharacterByNameData)
-      }
-     else if( FilteredValue === "Gender" ){
-       setResultsAfterFilter(CharacterByGenderData)
+      setResultsAfterFilter(CharacterByNameData)
+    }
+    else if (FilteredValue === "Gender") {
+      setResultsAfterFilter(CharacterByGenderData)
 
-     }
-     else if( FilteredValue === "Species" && searchTextFromRedux  !== "" ){
-       console.log('in Species')
-       setResultsAfterFilter(CharacterBySpeciesData)
+    }
+    else if (FilteredValue === "Species" && searchTextFromRedux !== "") {
+      setResultsAfterFilter(CharacterBySpeciesData)
 
-     }
-     else {
+    }
+    else {
       setResultsAfterFilter(CharacterAllData)
-        // dispatch(defaultSplitApi.util.invalidateTags(["CharactersByName","CharactersByGender","Characters"]))
-     }
+      // dispatch(defaultSplitApi.util.invalidateTags(["CharactersByName","CharactersByGender","Characters"]))
+    }
   })
-
-  // useEffect(() => {
-  //   getCharacterByName({ page: pageCount, name: searchTextFromRedux })
-  // },[searchTextFromRedux,pageCount])
-  
-
 
 
 
@@ -181,7 +173,6 @@ export const CharacterList = () => {
     let totalPages = resultsAfterFilter?.info?.pages
     let onEndReachedCalledDuringMomentum = false
 
-    console.log("resultsAfterFilter",resultsAfterFilter)
     return (
       <View>
         {isGrid ?

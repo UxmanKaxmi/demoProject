@@ -2,12 +2,14 @@ import { View, Text, TouchableHighlight, StyleSheet, Image, ListRenderItemInfo, 
 import React, { memo, useCallback, useMemo } from 'react';
 import { Result } from '../types/character-types';
 import { Colors, Outlines, Sizing, Typography } from '@styles/index';
+import { useNavigation } from '@react-navigation/native';
 
 
   const CharacterListSingle = ({ item, index, separators }: ListRenderItemInfo<Result>) => {
 
   const MoreVal =  useMemo(()=>  "more...",[]) 
   
+  const navigation = useNavigation()
 
  // Function to break the episodes to render in UI
  const renderEpisodes = useCallback((episodes: any[]) => {
@@ -63,7 +65,7 @@ import { Colors, Outlines, Sizing, Typography } from '@styles/index';
 
   return (
   <Pressable
-    onPress={() => { }}
+    onPress={() => navigation.navigate("DetailCharacter",item)}
     style={({ pressed }) => [
       { opacity: pressed ? 0.8 : 1 },
       styles.cardView
@@ -72,7 +74,6 @@ import { Colors, Outlines, Sizing, Typography } from '@styles/index';
 
   >
     <View style={styles.mainInnerView}>
-
       <View style={styles.imageView}>
         <Image style={styles.image}
           source={{ uri: item.image }}
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Sizing.x10,
     paddingVertical: Sizing.x1,
     backgroundColor: Colors.Location.brand,
-    borderRadius: 20,
+    borderRadius: Outlines.borderRadius.large,
   },
   cardViewInner: {
     flexDirection: 'row',

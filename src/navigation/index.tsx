@@ -7,6 +7,7 @@ import BottomSheetComponent from "components/bottom-sheet/filter-sheet";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from "./navigation.types";
 import { Colors } from "styles";
+import { DetailCharacterScreen, DetailLocationScreen, } from "screens";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -22,8 +23,6 @@ function ApplicationNavigator() {
 
   return (
     <NavigationContainer>
-
-      {/* added Stack Navigator to show the modals */}
       <Stack.Navigator>
         <Stack.Group screenOptions={{
         }}>
@@ -36,8 +35,35 @@ function ApplicationNavigator() {
             }}
 
           />
+           <Stack.Screen
+            name="DetailCharacter"
+            component={DetailCharacterScreen}
+            
+            options={{
+              headerBackTitle:"Back",
+              headerShown: true,
+              contentStyle: { backgroundColor: Colors.neutral.white }
+            }}
+            // initialParams={{ id:0 }}
+
+
+          />
+            <Stack.Screen
+            name="DetailLocation"
+            component={DetailLocationScreen}
+            
+            options={{
+              headerBackTitle:"Back",
+              headerShown: true,
+              contentStyle: { backgroundColor: Colors.neutral.white }
+            }}
+            // initialParams={{ id:0 }}
+
+
+          />
         </Stack.Group>
 
+      {/* added Stack Navigator to show the modals */}
         <Stack.Group screenOptions={{
           presentation: "formSheet",
           headerShown: false,

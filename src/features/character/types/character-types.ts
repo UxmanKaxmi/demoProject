@@ -1,10 +1,4 @@
-export interface Character {
-    info:    Info;
-    results: Result[];
-}
 
-
-  
 
 export interface ListResponse<T> {
     info: any;
