@@ -28,7 +28,7 @@ const CharacterListGrid= ({ item, index, separators }: ListRenderItemInfo<Result
         </View>
 
         <View style={styles.nameView}>
-          <Text numberOfLines={1} style={[Typography.header.x20, styles.nameText]}>{item.name}</Text>
+          <Text numberOfLines={1} style={[Typography.header.x20]}>{item.name}</Text>
           <Text >{item.species}</Text>
         </View>
 
@@ -63,10 +63,5 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.neutral.white,
     ...Outlines.shadow.base
   },
-  nameText: {
-
-
-  }
-
 });
 export default memo(CharacterListGrid);

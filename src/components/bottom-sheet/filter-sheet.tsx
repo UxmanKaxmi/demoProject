@@ -25,107 +25,286 @@ const BottomSheetComponent = () => {
     const navigation = useNavigation();
     const dispatch = useAppDispatch()
     const selectedFilter = useAppSelector((state: RootState) => state.selectedFilter.value)
+    const selectedTab = useAppSelector((state: RootState) => state.selectedTabIndex.selectedTab)
 
 
     const handleCloseModalPress = useCallback(() => {
         navigation.goBack()
     }, []);
 
+    const renderEachByTabName = () => {
+
+        if (selectedTab == 1) {
+            return (
+                <Pressable onPress={() => navigation.goBack()} style={styles.container}>
+                    {/* <Pressable onPress={()=>navigation.goBack()} style={{backgroundColor:'red',height:'100%'}} > */}
+                    <View style={styles.innerContainer}>
+
+                        <View style={[styles.modalHeadingView]}>
+                            <Text style={Typography.header.x50}>
+                                Filters
+                            </Text>
+
+                            <Pressable onPress={() => handleCloseModalPress()} style={{ marginEnd: Sizing.x20 }}>
+                                {closeIcon}
+                            </Pressable>
+
+                        </View>
+
+
+
+
+                        <Pressable id="name"
+                            style={({ pressed }) => [
+                                { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
+                                styles.button
+                            ]}
+                            onPress={() => dispatch(setFilter(FILTER_CHARACTER.NAME))}
+                        >
+                            <View style={styles.byNameView}>
+                                <View style={styles.byNameInnerView}>
+                                    {ByName}
+                                </View>
+
+                                <View style={styles.ByNameHeadingView}>
+                                    <Text style={[{ flexDirection: 'row' }, Typography.subheader.x40]}>
+                                        By Name
+                                    </Text>
+                                </View>
+
+                                {selectedFilter == "Name" ? <View style={styles.iconView}>
+                                    {selectedIcon}
+                                </View> : null}
+                            </View>
+                        </Pressable>
+
+                        <Pressable id="type" style={({ pressed }) => [
+                            { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
+                            styles.button
+                        ]}
+                            onPress={() => dispatch(setFilter(FILTER_CHARACTER.TYPE))}
+
+                        >
+                            <View style={styles.byNameView}>
+                                <View style={styles.byNameInnerView}>
+                                    <Image style={[styles.icon]} source={genderIcon} />
+                                </View>
+
+                                <View style={styles.ByNameHeadingView}>
+                                    <Text style={[{ flexDirection: 'row' }, Typography.subheader.x40]}>
+                                        By Type
+                                    </Text>
+                                </View>
+
+                                {selectedFilter == "Type" ? <View style={styles.iconView}>
+                                    {selectedIcon}
+                                </View> : null}
+                            </View>
+                        </Pressable>
+
+
+
+                    </View>
+                </Pressable>)
+        }
+
+        else if (selectedTab==2) {
+            return (
+                <Pressable onPress={() => navigation.goBack()} style={styles.container}>
+                    {/* <Pressable onPress={()=>navigation.goBack()} style={{backgroundColor:'red',height:'100%'}} > */}
+                    <View style={styles.innerContainer}>
+
+                        <View style={[styles.modalHeadingView]}>
+                            <Text style={Typography.header.x50}>
+                                Filters
+                            </Text>
+
+                            <Pressable onPress={() => handleCloseModalPress()} style={{ marginEnd: Sizing.x20 }}>
+                                {closeIcon}
+                            </Pressable>
+
+                        </View>
+
+
+
+
+                        <Pressable id="name"
+                            style={({ pressed }) => [
+                                { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
+                                styles.button
+                            ]}
+                            onPress={() => dispatch(setFilter(FILTER_CHARACTER.NAME))}
+                        >
+                            <View style={styles.byNameView}>
+                                <View style={styles.byNameInnerView}>
+                                    {ByName}
+                                </View>
+
+                                <View style={styles.ByNameHeadingView}>
+                                    <Text style={[{ flexDirection: 'row' }, Typography.subheader.x40]}>
+                                        By Name
+                                    </Text>
+                                </View>
+
+                                {selectedFilter == "Name" ? <View style={styles.iconView}>
+                                    {selectedIcon}
+                                </View> : null}
+                            </View>
+                        </Pressable>
+
+                        <Pressable id="gender" style={({ pressed }) => [
+                            { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
+                            styles.button
+                        ]}
+                            onPress={() => dispatch(setFilter(FILTER_CHARACTER.GENDER))}
+
+                        >
+                            <View style={styles.byNameView}>
+                                <View style={styles.byNameInnerView}>
+                                    <Image style={[styles.icon]} source={genderIcon} />
+                                </View>
+
+                                <View style={styles.ByNameHeadingView}>
+                                    <Text style={[{ flexDirection: 'row' }, Typography.subheader.x40]}>
+                                        By Gender
+                                    </Text>
+                                </View>
+
+                                {selectedFilter == "Gender" ? <View style={styles.iconView}>
+                                    {selectedIcon}
+                                </View> : null}
+                            </View>
+                        </Pressable>
+
+
+                        <Pressable id="species" style={({ pressed }) => [
+                            { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
+                            styles.button
+                        ]}
+                            onPress={() => dispatch(setFilter(FILTER_CHARACTER.SPECIES))}
+
+                        >
+                            <View style={styles.byNameView}>
+                                <View style={styles.byNameInnerView}>
+                                    <Image style={[styles.icon]} source={speciesIcon} />
+                                </View>
+
+                                <View style={styles.ByNameHeadingView}>
+                                    <Text style={[{ flexDirection: 'row' }, Typography.subheader.x40]}>
+                                        By Species
+                                    </Text>
+                                </View>
+
+                                {selectedFilter == "Species" ? <View style={styles.iconView}>
+                                    {selectedIcon}
+                                </View> : null}
+                            </View>
+                        </Pressable>
+                    </View>
+                    {/* </Pressable> */}
+                </Pressable>)
+        }
+        else {
+            return (
+                <Pressable onPress={() => navigation.goBack()} style={styles.container}>
+                    {/* <Pressable onPress={()=>navigation.goBack()} style={{backgroundColor:'red',height:'100%'}} > */}
+                    <View style={styles.innerContainer}>
+
+                        <View style={[styles.modalHeadingView]}>
+                            <Text style={Typography.header.x50}>
+                                Filters
+                            </Text>
+
+                            <Pressable onPress={() => handleCloseModalPress()} style={{ marginEnd: Sizing.x20 }}>
+                                {closeIcon}
+                            </Pressable>
+
+                        </View>
+
+
+
+
+                        <Pressable id="name"
+                            style={({ pressed }) => [
+                                { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
+                                styles.button
+                            ]}
+                            onPress={() => dispatch(setFilter(FILTER_CHARACTER.NAME))}
+                        >
+                            <View style={styles.byNameView}>
+                                <View style={styles.byNameInnerView}>
+                                    {ByName}
+                                </View>
+
+                                <View style={styles.ByNameHeadingView}>
+                                    <Text style={[{ flexDirection: 'row' }, Typography.subheader.x40]}>
+                                        By Name
+                                    </Text>
+                                </View>
+
+                                {selectedFilter == "Name" ? <View style={styles.iconView}>
+                                    {selectedIcon}
+                                </View> : null}
+                            </View>
+                        </Pressable>
+
+                        <Pressable id="gender" style={({ pressed }) => [
+                            { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
+                            styles.button
+                        ]}
+                            onPress={() => dispatch(setFilter(FILTER_CHARACTER.GENDER))}
+
+                        >
+                            <View style={styles.byNameView}>
+                                <View style={styles.byNameInnerView}>
+                                    <Image style={[styles.icon]} source={genderIcon} />
+                                </View>
+
+                                <View style={styles.ByNameHeadingView}>
+                                    <Text style={[{ flexDirection: 'row' }, Typography.subheader.x40]}>
+                                        By Gender
+                                    </Text>
+                                </View>
+
+                                {selectedFilter == "Gender" ? <View style={styles.iconView}>
+                                    {selectedIcon}
+                                </View> : null}
+                            </View>
+                        </Pressable>
+
+
+                        <Pressable id="species" style={({ pressed }) => [
+                            { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
+                            styles.button
+                        ]}
+                            onPress={() => dispatch(setFilter(FILTER_CHARACTER.SPECIES))}
+
+                        >
+                            <View style={styles.byNameView}>
+                                <View style={styles.byNameInnerView}>
+                                    <Image style={[styles.icon]} source={speciesIcon} />
+                                </View>
+
+                                <View style={styles.ByNameHeadingView}>
+                                    <Text style={[{ flexDirection: 'row' }, Typography.subheader.x40]}>
+                                        By Species
+                                    </Text>
+                                </View>
+
+                                {selectedFilter == "Species" ? <View style={styles.iconView}>
+                                    {selectedIcon}
+                                </View> : null}
+                            </View>
+                        </Pressable>
+                    </View>
+                    {/* </Pressable> */}
+                </Pressable>)
+        }
+
+    }
+
     return (
-        <Pressable onPress={()=>navigation.goBack()}  style={styles.container}>
-            {/* <Pressable onPress={()=>navigation.goBack()} style={{backgroundColor:'red',height:'100%'}} > */}
-            <View style={styles.innerContainer}>
-
-                <View style={[, styles.modalHeadingView]}>
-                    <Text style={Typography.header.x50}>
-                        Filters
-                    </Text>
-
-                    <Pressable onPress={() => handleCloseModalPress()} style={{ marginEnd: Sizing.x20 }}>
-                        {closeIcon}
-                    </Pressable>
-
-                </View>
-
-
-
-
-                <Pressable id="name"
-                    style={({ pressed }) => [
-                        { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
-                        styles.button
-                    ]}
-                    onPress={() => dispatch(setFilter(FILTER_CHARACTER.NAME))}
-                >
-                    <View style={styles.byNameView}>
-                        <View style={styles.byNameInnerView}>
-                            {ByName}
-                        </View>
-
-                        <View style={styles.ByNameHeadingView}>
-                            <Text style={[{ flexDirection: 'row' }, Typography.subheader.x40]}>
-                                By Name
-                            </Text>
-                        </View>
-
-                        {selectedFilter == "Name" ? <View style={styles.iconView}>
-                            {selectedIcon}
-                        </View> : null}
-                    </View>
-                </Pressable>
-
-                <Pressable id="gender" style={({ pressed }) => [
-                    { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
-                    styles.button
-                ]}
-                    onPress={() => dispatch(setFilter(FILTER_CHARACTER.GENDER))}
-
-                >
-                    <View style={styles.byNameView}>
-                        <View style={styles.byNameInnerView}>
-                            <Image style={[styles.icon]} source={genderIcon} />
-                        </View>
-
-                        <View style={styles.ByNameHeadingView}>
-                            <Text style={[{ flexDirection: 'row' }, Typography.subheader.x40]}>
-                                By Gender
-                            </Text>
-                        </View>
-
-                        {selectedFilter == "Gender" ? <View style={styles.iconView}>
-                            {selectedIcon}
-                        </View> : null}
-                    </View>
-                </Pressable>
-
-
-                <Pressable id="species" style={({ pressed }) => [
-                    { backgroundColor: pressed ? Colors.neutral.s200 : 'transparent' },
-                    styles.button
-                ]}
-                    onPress={() => dispatch(setFilter(FILTER_CHARACTER.SPECIES))}
-
-                >
-                    <View style={styles.byNameView}>
-                        <View style={styles.byNameInnerView}>
-                            <Image style={[styles.icon]} source={speciesIcon} />
-                        </View>
-
-                        <View style={styles.ByNameHeadingView}>
-                            <Text style={[{ flexDirection: 'row' }, Typography.subheader.x40]}>
-                                By Species
-                            </Text>
-                        </View>
-
-                        {selectedFilter == "Species" ? <View style={styles.iconView}>
-                            {selectedIcon}
-                        </View> : null}
-                    </View>
-                </Pressable>
-            </View>
-            {/* </Pressable> */}
-        </Pressable>
-
+        renderEachByTabName()
     );
 };
 
@@ -172,12 +351,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'flex-end',
-        
+
 
 
     },
     innerContainer: {
-     
+
         paddingVertical: Sizing.x30,
         backgroundColor: Colors.neutral.s100,
         borderTopRightRadius: Outlines.borderRadius.large,

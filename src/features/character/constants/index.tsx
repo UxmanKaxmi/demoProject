@@ -4,7 +4,9 @@
 export const FILTER_CHARACTER = {
     NAME: 'Name',
     GENDER: 'Gender',
-    SPECIES: "Species"
+    SPECIES: "Species",
+    TYPE: "Type"
+
 }
 
 

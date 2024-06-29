@@ -21,13 +21,10 @@ const LocationListGrid= ({ item, index, separators }: ListRenderItemInfo<Result>
     >
       <View style={styles.cardInnerView}>
         <View style={{ flex: 1 }}>
-          <Text style={[Typography.header.x10,{marginBottom:Sizing.x5}]}>{item?.name}</Text>
+          <Text numberOfLines={1} style={[Typography.header.x10,{marginBottom:Sizing.x5}]}>{item?.name}</Text>
           <Text style={[Typography.fontSize.x1]}>{item.type}</Text>
         </View>
       </View>
-
-
-
     </Pressable >
   )
 
@@ -35,16 +32,10 @@ const LocationListGrid= ({ item, index, separators }: ListRenderItemInfo<Result>
 }
 
 const styles = StyleSheet.create({
-  image: {
-    resizeMode: "contain",
-    height: Sizing.layout.x90,
-  },
-  nameView: {
-    alignContent: 'center',
-    flex: 0.3,
-    padding: Sizing.x5
-  },
   cardInnerView: {
+    paddingHorizontal:Sizing.x10,
+    paddingVertical:Sizing.x15,
+
     minWidth: Sizing.screen.width / 3.5,
     backgroundColor: Colors.card.background,
   },
@@ -55,10 +46,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.neutral.white,
     ...Outlines.shadow.base
   },
-  nameText: {
-
-
-  }
+ 
 
 });
 export default memo(LocationListGrid);

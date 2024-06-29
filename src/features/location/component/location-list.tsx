@@ -10,6 +10,7 @@ import { useGetAllLocationQuery } from '../api/location-api'
 import { setPageCountInRedux } from '../actions/page-count-slice'
 import LocationListSingle from './location-list-single'
 import { Result } from '../types/location-types'
+import LocationListGrid from './location-list-grid'
 
 
 export const LocationList = () => {
@@ -90,7 +91,7 @@ export const LocationList = () => {
             }}
             showsVerticalScrollIndicator={false}
             style={styles.flatListMainView}
-            renderItem={({ item, index, separators }) => <LocationListSingle item={item} index={item.id} separators={separators} />}
+            renderItem={({ item, index, separators }) => <LocationListGrid item={item} index={item.id} separators={separators} />}
             onMomentumScrollBegin={() => { onEndReachedCalledDuringMomentum = false; }}
             onEndReached={() => onEndReachedCalledDuringMomentum ? null :
               pageCount < totalPages ?
